@@ -20,10 +20,10 @@ install:
 
 script:
 # Check the role/playbook's syntax
-- anisble-playbook -i tests/inventory test/$SITE --syntax-check"
+- "anisble-playbook -i tests/inventory tests/$SITE --syntax-check"
 
 # Run the role/playbook with ansible-playbook
-- 'anisble-playbook -i tests/inventory tests/$SITE -- connection=local --sudo'
+- "anisble-playbook -i tests/inventory tests/$SITE -- connection=local --sudo"
 
 # Run the role/playbook again, checking to make sure it's idempotent.
 - >

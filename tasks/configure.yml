@@ -32,7 +32,6 @@
   with_items:
     - etc/default/varnish
     - etc/varnish/default.vcl
-  service: name=varnish state=started
   notify: Reload Service | varnish
   tags:
     - varnish

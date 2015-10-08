@@ -1,7 +1,7 @@
 ---
-- name: Start Service | varnish
+- name: Reload Service | varnish
   service:
-    state: started
+    state: reloaded
     name: varnish
   tags:
     - disruptive

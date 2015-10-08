@@ -6,8 +6,8 @@
 
 Tunables
 --------
-* `varnish_user`: varnish
-* `varnish_group`: varnish
+* `varnish_user`: (string) - User to run varnish as
+* `varnish_group`: (string) - Group to run varnish as
 * `varnish_runtime_root` (string) - Directory for runtime data
 * `varnish_pidfile_path` (string) - Path for pidfile
 * `varnish_default_backend_host` (string) - Default address for backend

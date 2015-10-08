@@ -3,8 +3,8 @@
   file:
     state: directory
     path: "{{ varnish_runtime_root }}"
-    owner: root
-    group: wcadmin
+    owner: "{{ varnish_user }}"
+    group: "{{ varnish_group }}"
     mode: 0775
   tags:
     - directory-structure

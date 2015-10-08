@@ -3,4 +3,4 @@
   remote_user: root
   roles:
   - role: telusdigital.apt-repository
-  - role: telusdigital.varnish
+  - role: ansible-varnish

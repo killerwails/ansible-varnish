@@ -26,8 +26,8 @@
   template:
     src: "{{ item }}"
     dest: "/{{ item }}"
-    owner: root
-    group: wcadmin
+    owner: "{{ varnish_user }}"
+    group: "{{ varnish_group }}"
     mode: 0664
   with_items:
     - etc/default/varnish

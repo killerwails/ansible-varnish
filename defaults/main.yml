@@ -1,6 +1,6 @@
 ---
-varnish_user: varnish
-varnish_group: varnish
+varnish_user: www-data
+varnish_group: www-data
 
 varnish_runtime_root: "{{ runtime_root | default('/var/run') }}/varnish"
 varnish_pidfile_path: "{{ varnish_runtime_root }}/varnish.pid"

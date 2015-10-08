@@ -18,8 +18,6 @@ install:
 # Install dependencies
 - ansible-galaxy install telusdigital.apt-repository
 
-services: varnish
-
 script:
 # Check the role/playbook's syntax
 - "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"

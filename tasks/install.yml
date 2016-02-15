@@ -1,0 +1,11 @@
+---
+- name: Install Packages | apt
+  apt:
+    state: latest
+    name: "{{ item }}"
+  with_items:
+  - varnish
+  tags:
+  - varnish
+  - software installation
+  - apt

@@ -3,6 +3,7 @@
   service:
     name: varnish
     state: started
+    enabled: yes
 
 - name: service | varnish | stopped
   service:
@@ -13,6 +14,7 @@
   service:
     name: varnish
     state: restarted
+    enabled: yes
 
 - name: service | varnish | reloaded
   service:

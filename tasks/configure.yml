@@ -1,3 +1,26 @@
+
+- name: "Directory Exists | {{ varnish_vcl_path }}"
+  file:
+    state: directory
+    path: "{{ varnish_vcl_path }}"
+    owner: root
+    group: staff
+    mode: 0664
+  tags:
+    - directory-structure
+    - varnish_vcl
+
+- name: "Directory Exists | /etc/default/varnish "
+  file:
+    state: directory
+    path: "/etc/default/varnish"
+    owner: root
+    group: staff
+    mode: 0664
+  tags:
+    - directory-structure
+    - varnish
+
 - name: Configure Varnish
   template:
     src: "{{ item }}"

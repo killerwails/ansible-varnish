@@ -1,37 +1,15 @@
-language: python
-python: "2.7"
-
-env:
-  - SITE=test.yml
-
-before_install: 
-  - sudo apt-get update -q -y
-  - sudo apt-get install -y curl
+---
+sudo: required
+# docker is required to run tests
+services: docker
 
 install:
-# Install Ansible
-- pip install --upgrade pip
-- pip install ansible
-
-# Add ansible.cfg to pick up roles path
-- "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-
-# Install dependencies
-- ansible-galaxy install telusdigital.apt-repository
+  - bundle install
 
 script:
-# Check the role/playbook's syntax
-- "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"
+  # run kitchen tests (destroy, create, converge, setup, verify and destroy)
+  - bundle exec kitchen test
 
-# Run the role/playbook with ansible-playbook
-- "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
-
-# Run the role/playbook again, checking to make sure it's idempotent.
-- >
-  ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
-  | grep -q 'changed=0.*failed=0'
-  && (echo 'Idempotence test: pass' && exit 0)
-  || (echo 'Idempotence test: fail' && exit 1)
-
-# Check the version of Varnish (if this output fails, it's not running)
-- varnishd -V
+notifications:
+  slack:
+    secure: GnKONbx4q+Jld4YY66x5o3REviSj4fzsTznEHDmOiA5nVmfuV4TRk+FLXS93+jUVQpXFMs4SEweFIKA5pfW8arnMuq+2/noMCnWXQ7uSRvPAPREDtFASCa7ytZhzbX9y91R3D6iTUl9ZdMk41kcVsraJxI1vOPhwZ23o+euPwm4G4SpQ2bwBEPIqN5hZRyHqHrWX2fYR1EfHRJNdd61R4OyJaHgOjOPV2b8lussI0MH2JPHB7MT2vPy6YSle18sHjDdjxlXElh2GSuCGS/wnu1TdTFnv3q8+A7CfH84Ocoa06oNo2eCquQjKO0mJu0LcOWwQugydEhMlNyDEO7ncQKypMpVicoW1nwNB/zUC2CvK5rQYFdRBOsTWCP2IoMar36VTRk+i4Ob4TPRw4UAazNL8i2FqDomAu8uy+XAtr3H5LSyYQYL8+7G3zLhpEZyiVLm9vThrHQ/xamix+SH1QNYIBM3utY2rHjjIdhiOMlufyojy9ft5azIjt6feiFqvD/v+SL0/saY3sy/X7Kn2jqzAOz7LNPlkqet0t8zdbcJ7HbBX3FTjqvMCj32P+n7Ub3bOPtpBv9VqBKhUUMM3LLPdGb/Gy9EcJKqEjP15IcAPxp+TqntWYrDS9M7F2Mapej5IcZc1kr3/1mXpZZtgEscZR2qZqH9DXY7GvXU0kl4=

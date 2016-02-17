@@ -1,4 +1,4 @@
-
+---
 - name: "Directory Exists | {{ varnish_vcl_path }}"
   file:
     state: directory

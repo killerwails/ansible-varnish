@@ -37,7 +37,6 @@ describe 'ansible-varnish::configure' do
     it { should be_mode 664 }
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'staff' }
-    its(:content) { should match '/templates/etc/varnish/default.vcl'}
   end
 
   describe service('varnish') do
